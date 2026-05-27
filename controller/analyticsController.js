@@ -34,3 +34,12 @@ export const getSuccessfulDeliveries = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const getDelayedDeliveries = async (req, res) => {
+  try {
+    const data = await AnalyticsModel.fetchDelayedDeliveries();
+    res.json({ success: true, delayedDeliveries: data.delayedDeliveries });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
