@@ -1,9 +1,10 @@
 import express from "express";
 
 import {
-  getTotalShipments,
+    getTotalShipments,
     getDailyShipments,
-    getWeeklyShipments
+    getWeeklyShipments,
+    getSuccessfulDeliveries,
 } from "../controller/analyticsController.js";
 
 const router = express.Router();
@@ -11,5 +12,6 @@ const router = express.Router();
 router.get("/total-shipments", getTotalShipments);
 router.get("/daily-shipments", getDailyShipments);
 router.get("/weekly-shipments", getWeeklyShipments);
+router.get("/successful-deliveries", getSuccessfulDeliveries);
 
 export default router;

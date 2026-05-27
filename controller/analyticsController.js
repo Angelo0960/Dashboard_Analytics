@@ -25,3 +25,12 @@ export const getWeeklyShipments = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const getSuccessfulDeliveries = async (req, res) => {
+  try {
+    const data = await AnalyticsModel.fetchSuccessfulDeliveries();
+    res.json({ success: true, successfulDeliveries: data.successfulDeliveries });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
