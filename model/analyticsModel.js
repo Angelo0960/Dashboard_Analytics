@@ -54,6 +54,11 @@ const AnalyticsModel = {
         const weeklyCount = records.filter(r => isThisWeek(getRecordDate(r))).length;
         return { weeklyShipments: weeklyCount };
     },
+    fetchSuccessfulDeliveries: async () => {
+        const records = await fetchFromPerformance();
+        const successful = records.filter(r => r.status === 'on-time').length;
+        return { successfulDeliveries: successful };
+    },
 };
 
 export default AnalyticsModel;
