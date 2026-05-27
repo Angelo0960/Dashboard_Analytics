@@ -59,6 +59,11 @@ const AnalyticsModel = {
         const successful = records.filter(r => r.status === 'on-time').length;
         return { successfulDeliveries: successful };
     },
+     fetchDelayedDeliveries: async () => {
+        const records = await fetchFromPerformance();
+        const delayed = records.filter(r => r.status === 'delayed').length;
+        return { delayedDeliveries: delayed };
+    }
 };
 
 export default AnalyticsModel;
